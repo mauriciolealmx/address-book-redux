@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core';
+
+import styles from './AuthFrom.styles';
 
 class SigninForm extends Component {
   state = { email: '', password: '' };
@@ -12,33 +18,52 @@ class SigninForm extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <Paper>
-        <form onSubmit={this.onSubmit}>
-          <fieldset>
-            <label>Email</label>
-            <input
-              name="email"
-              value={this.state.email}
+      <div className={classes.container}>
+        <Paper classes={{ root: classes.root }}>
+          <Typography
+            component="h1"
+            variant="h5"
+            style={{ textAlign: 'center', padding: '35px' }}
+          >
+            {this.props.title}
+          </Typography>
+          <form onSubmit={this.onSubmit}>
+            <TextField
+              autoComplete="email"
+              fullWidth
+              label="Email"
+              margin="normal"
+              type="email"
               onChange={event => this.setState({ email: event.target.value })}
+              value={this.state.email}
             />
-          </fieldset>
-          <fieldset>
-            <label>Password</label>
-            <input
-              type="password"
-              value={this.state.password}
+            <TextField
+              autoComplete="current-password"
+              fullWidth
+              label="Password"
+              margin="normal"
               onChange={event =>
                 this.setState({ password: event.target.value })
               }
+              type="password"
+              value={this.state.password}
             />
-          </fieldset>
-          <div>{this.props.errorMessage}</div>
-          <button>Submit</button>
-        </form>
-      </Paper>
+            <div>{this.props.errorMessage}</div>
+            <Button
+              color="primary"
+              fullWidth
+              onClick={this.onSubmit}
+              variant="outlined"
+            >
+              Submit
+            </Button>
+          </form>
+        </Paper>
+      </div>
     );
   }
 }
 
-export default SigninForm;
+export default withStyles(styles)(SigninForm);
