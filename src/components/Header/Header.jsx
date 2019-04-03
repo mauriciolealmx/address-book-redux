@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import styles from './Header/header.styles';
+import styles from './header.styles';
 
 class Header extends Component {
   render() {
