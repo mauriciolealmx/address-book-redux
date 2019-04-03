@@ -11,12 +11,7 @@ class Signup extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <h3>Sign up</h3>
-        <AuthForm onSubmit={this.onSubmit} />
-      </div>
-    );
+    return <AuthForm title="Sign Up" onSubmit={this.onSubmit} />;
   }
 }
 
