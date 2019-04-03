@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AuthForm from './AuthForm';
-import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import { connect } from 'react-redux';
+
+import AuthForm from './AuthForm';
 
 class SigninForm extends Component {
   onSubmit = ({ email, password }) => {
@@ -11,12 +12,7 @@ class SigninForm extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <h3>Sign In</h3>
-        <AuthForm onSubmit={this.onSubmit} />
-      </div>
-    );
+    return <AuthForm title="Sign In" onSubmit={this.onSubmit} />;
   }
 }
 
