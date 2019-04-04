@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Signup extends Component {
   onSubmit = ({ email, password }) => {
     this.props.signup({ email, password }, () => {
-      this.props.history.push('/feature');
+      this.props.history.push('/welcome');
     });
   };
 
