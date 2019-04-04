@@ -11,6 +11,30 @@ class Header extends Component {
     this.props.history.push(path);
   }
 
+
+  renderButtons() {
+    if (!this.props.auth.token) {
+      return (
+        <React.Fragment>
+          <Button onClick={() => this.handleClick('/signin')} color="inherit">
+            Sign In
+          </Button>
+          <Button onClick={() => this.handleClick('/signup')} color="inherit">
+            Sign Up
+          </Button>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <Button onClick={() => this.logout()} color="inherit">
+            Logout
+          </Button>
+        </React.Fragment>
+      );
+    }
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -20,12 +44,7 @@ class Header extends Component {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Address Book
             </Typography>
-            <Button onClick={() => this.handleClick('/signin')} color="inherit">
-              Login
-            </Button>
-            <Button onClick={() => this.handleClick('/signup')} color="inherit">
-              Sign up
-            </Button>
+            {this.renderButtons()}
           </Toolbar>
         </AppBar>
       </div>
