@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { LOGIN, SIGNUP, SIGNOUT } from '../Auth/paths.config';
 
 class Header extends Component {
   handleClick(path) {
@@ -15,10 +16,10 @@ class Header extends Component {
     if (!this.props.auth.token) {
       return (
         <React.Fragment>
-          <Button onClick={() => this.handleClick('/login')} color="inherit">
+          <Button onClick={() => this.handleClick(LOGIN)} color="inherit">
             Log In
           </Button>
-          <Button onClick={() => this.handleClick('/signup')} color="inherit">
+          <Button onClick={() => this.handleClick(SIGNUP)} color="inherit">
             Sign Up
           </Button>
         </React.Fragment>
@@ -26,7 +27,7 @@ class Header extends Component {
     } else {
       return (
         <React.Fragment>
-          <Button onClick={() => this.handleClick('/signout')} color="inherit">
+          <Button onClick={() => this.handleClick(SIGNOUT)} color="inherit">
             Logout
           </Button>
         </React.Fragment>

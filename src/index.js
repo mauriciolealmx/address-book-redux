@@ -5,12 +5,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import reducers from './reducers';
 import App from './components/App';
 import Login from './components/Auth/LoginForm';
+import Signout from './components/Auth/Signout';
 import Signup from './components/Auth/SignupForm';
 import Welcome from './components/Welcome';
-import Signout from './components/Auth/Signout';
+import reducers from './reducers';
+import { LOGIN, ROOT, SIGNOUT, SIGNUP, WELCOME } from './components/Auth/paths.config';
 
 import axios from 'axios';
 window.axios = axios;
@@ -26,11 +27,11 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/welcome" component={Welcome} />
-        <Route exact path="/signout" component={Signout} />
+        <Route exact path={ROOT} component={Login} />
+        <Route exact path={LOGIN} component={Login} />
+        <Route exact path={SIGNOUT} component={Signout} />
+        <Route exact path={SIGNUP} component={Signup} />
+        <Route exact path={WELCOME} component={Welcome} />
       </App>
     </BrowserRouter>
   </Provider>,
