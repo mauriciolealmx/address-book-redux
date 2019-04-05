@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 import App from './components/App';
-import Signin from './components/Auth/SigninForm';
+import Login from './components/Auth/LoginForm';
 import Signup from './components/Auth/SignupForm';
 import Welcome from './components/Welcome';
 import Signout from './components/Auth/Signout';
@@ -26,8 +26,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App>
-        <Route exact path="/" component={Signin} />
-        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/signout" component={Signout} />

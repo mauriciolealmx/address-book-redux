@@ -12,7 +12,7 @@ class SigninForm extends Component {
   };
 
   render() {
-    return <AuthForm title="Sign In" onSubmit={this.onSubmit} />;
+    return <AuthForm title="Log In" onSubmit={this.onSubmit} />;
   }
 }
 

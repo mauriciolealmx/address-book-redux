@@ -15,8 +15,8 @@ class Header extends Component {
     if (!this.props.auth.token) {
       return (
         <React.Fragment>
-          <Button onClick={() => this.handleClick('/signin')} color="inherit">
-            Sign In
+          <Button onClick={() => this.handleClick('/login')} color="inherit">
+            Log In
           </Button>
           <Button onClick={() => this.handleClick('/signup')} color="inherit">
             Sign Up
