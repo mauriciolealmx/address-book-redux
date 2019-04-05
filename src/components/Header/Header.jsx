@@ -11,7 +11,6 @@ class Header extends Component {
     this.props.history.push(path);
   }
 
-
   renderButtons() {
     if (!this.props.auth.token) {
       return (
@@ -27,7 +26,7 @@ class Header extends Component {
     } else {
       return (
         <React.Fragment>
-          <Button onClick={() => this.logout()} color="inherit">
+          <Button onClick={() => this.handleClick('/signout')} color="inherit">
             Logout
           </Button>
         </React.Fragment>
