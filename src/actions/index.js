@@ -1,13 +1,22 @@
 import authService from '../apis/auth.api';
 
 export const signin = (formProps, callback) => async dispatch => {
-  console.log('signin action happening');
-  // sessionStorage.setItem('token', res.data.token);
+  const res = await authService.post('/signin', formProps);
+  dispatch({
+    type: 'UPDATE_USER',
+    payload: res.data
+  });
+  sessionStorage.setItem('token', res.data.token);
+  callback();
 };
 
-export const signout = (formProps, callback) => async dispatch => {
-  console.log('signout actions happening');
-  // sessionStorage.removeItem('token');
+export const signout = (callback) => async dispatch => {
+  dispatch({
+    type: 'UPDATE_USER',
+    payload: ''
+  });
+  sessionStorage.removeItem('token');
+  callback();
 };
 
 export const signup = (formProps, callback) => async dispatch => {
