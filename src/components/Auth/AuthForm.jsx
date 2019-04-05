@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { withStyles } from '@material-ui/core';
 
 import styles from './AuthFrom.styles';
 
 class SigninForm extends Component {
-  state = { email: '', password: '' };
+  state = { email: '', password: '', showPassword: false };
 
   onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
     this.props.onSubmit({ email, password });
+  };
+
+  handleChange = (key, event) => {
+    this.setState({
+      [key]: event.target.value
+    });
+  };
+
+  handleClickShowPassword = () => {
+    this.setState(state => ({ showPassword: !state.showPassword }));
   };
 
   render() {
@@ -31,24 +45,35 @@ class SigninForm extends Component {
           </Typography>
           <form onSubmit={this.onSubmit}>
             <TextField
-              autoComplete="email"
               fullWidth
               label="Email"
               margin="normal"
               type="email"
-              onChange={event => this.setState({ email: event.target.value })}
+              onChange={event => this.handleChange('email', event)}
               value={this.state.email}
             />
             <TextField
-              autoComplete="current-password"
               fullWidth
               label="Password"
-              margin="normal"
-              onChange={event =>
-                this.setState({ password: event.target.value })
-              }
-              type="password"
+              type={this.state.showPassword ? 'text' : 'password'}
               value={this.state.password}
+              onChange={event => this.handleChange('password', event)}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="Toggle password visibility"
+                      onClick={this.handleClickShowPassword}
+                    >
+                      {this.state.showPassword ? (
+                        <VisibilityOff />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
             />
             <div>{this.props.errorMessage}</div>
             <Button
