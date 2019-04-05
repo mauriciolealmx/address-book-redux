@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { LOGIN, SIGNUP, SIGNOUT } from '../Auth/paths.config';
+import { LOGIN, SIGNUP, SIGNOUT, WELCOME } from '../Auth/paths.config';
 
 class Header extends Component {
   handleClick(path) {
@@ -41,7 +41,12 @@ class Header extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
+            <Typography
+              onClick={() => this.handleClick(WELCOME)}
+              variant="h6"
+              color="inherit"
+              className={classes.grow}
+            >
               Address Book
             </Typography>
             {this.renderButtons()}
