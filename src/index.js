@@ -8,6 +8,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import App from './components/App';
 import Signin from './components/Auth/SigninForm';
 import Signup from './components/Auth/SignupForm';
+import Welcome from './components/Welcome';
+import Signout from './components/Auth/Signout';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -22,8 +24,11 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App>
+        <Route exact path="/" component={Signin} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/welcome" component={Welcome} />
+        <Route exact path="/signout" component={Signout} />
       </App>
     </BrowserRouter>
   </Provider>,
