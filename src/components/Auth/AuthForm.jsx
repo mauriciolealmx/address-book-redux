@@ -21,9 +21,9 @@ class SigninForm extends Component {
     this.props.onSubmit({ email, password });
   };
 
-  handleChange = (key, event) => {
+  handleChange = e => {
     this.setState({
-      [key]: event.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -46,18 +46,20 @@ class SigninForm extends Component {
           <form onSubmit={this.onSubmit}>
             <TextField
               fullWidth
+              name="email"
               label="Email"
               margin="normal"
               type="email"
-              onChange={event => this.handleChange('email', event)}
+              onChange={this.handleChange}
               value={this.state.email}
             />
             <TextField
               fullWidth
+              name="password"
               label="Password"
               type={this.state.showPassword ? 'text' : 'password'}
               value={this.state.password}
-              onChange={event => this.handleChange('password', event)}
+              onChange={this.handleChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
