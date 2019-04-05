@@ -5,17 +5,21 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
+import reducers from './reducers';
 import App from './components/App';
 import Signin from './components/Auth/SigninForm';
 import Signup from './components/Auth/SignupForm';
 import Welcome from './components/Welcome';
 import Signout from './components/Auth/Signout';
 
+import axios from 'axios';
+window.axios = axios;
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  () => 'Reducers go here',
+  reducers,
   {
-    auth: { authenticated: sessionStorage.getItem('token') },
+    auth: { token: sessionStorage.getItem('token') }
   },
   composeEnhancers(applyMiddleware(reduxThunk))
 );
