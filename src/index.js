@@ -15,12 +15,14 @@ import Signout from './components/Auth/Signout';
 import axios from 'axios';
 window.axios = axios;
 
+const initialState = {
+  auth: { token: sessionStorage.getItem('token') }
+};
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,
-  {
-    auth: { token: sessionStorage.getItem('token') }
-  },
+  initialState,
   composeEnhancers(applyMiddleware(reduxThunk))
 );
 
