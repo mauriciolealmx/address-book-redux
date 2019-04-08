@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AuthForm from './AuthForm';
-import * as actions from '../../actions';
 import { connect } from 'react-redux';
+
+import * as actions from '../../actions';
+import AuthForm from './AuthForm/AuthForm';
 
 class Signup extends Component {
   onSubmit = ({ email, password }) => {

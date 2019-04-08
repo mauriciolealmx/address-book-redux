@@ -7,6 +7,7 @@ import Header from './Header/header.container';
 
 class App extends Component {
   componentWillMount() {
+    // TODO: Component should not be pushing routes.
     if (this.props.auth.token) {
       this.props.history.push('/welcome');
     }
