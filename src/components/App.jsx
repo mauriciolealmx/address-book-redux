@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { withRouter } from 'react-router-dom';
 
+import * as actions from '../actions';
 import Header from './Header/header.container';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getCurrentUser(() => {
+  componentWillMount() {
+    if (this.props.auth.token) {
       this.props.history.push('/welcome');
-    });
+    }
   }
 
   render() {
@@ -22,7 +22,13 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = ({ auth }) => {
+  return {
+    auth
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(withRouter(App));

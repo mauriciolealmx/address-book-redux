@@ -29,7 +29,7 @@ export const signup = (formProps, callback) => async dispatch => {
   callback();
 };
 
-export const getCurrentUser = (callback) => async dispatch => {
+export const getCurrentUser = callback => async dispatch => {
   const JWT = sessionStorage.getItem('token');
   const options = { headers: { authorization: JWT } };
   try {
@@ -40,7 +40,7 @@ export const getCurrentUser = (callback) => async dispatch => {
       type: 'UPDATE_USER',
       payload: { ...res.data, token: JWT }
     });
-    callback()
+    callback();
   } catch (err) {
     console.log(err);
   }
